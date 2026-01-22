@@ -40,9 +40,29 @@ ggplot(
 
 ### Exercise 2
 
+We defined the color and fill of the curves by mapping aesthetics of the
+plot but defined the alpha level as a characteristic of the plotting
+geom because we want to have different colors and fills for different
+continents, while the alpha level to be the same across all continents.
+Mapping aesthetics allows us to assign unique features to each category,
+while geom allows us to assign the same feature to all cagtegories.
+
 ``` r
-# insert code here
+ggplot(
+  data = plastic_waste,
+  mapping = aes(
+    x = plastic_waste_per_cap,
+    color = continent,
+    fill = continent
+  )
+) +
+  geom_density(alpha = 0.3)
 ```
+
+    ## Warning: Removed 51 rows containing non-finite outside the scale range
+    ## (`stat_density()`).
+
+![](lab-02_files/figure-gfm/plastic-waste-density-1.png)<!-- -->
 
 ### Exercise 3
 
