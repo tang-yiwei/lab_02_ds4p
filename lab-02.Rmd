@@ -1,7 +1,7 @@
 ---
 title: "Lab 02 - Plastic waste"
-author: "Insert your name here"
-date: "Insert date here"
+author: "Yiwei Tang"
+date: "1/22/2026"
 output: github_document
 ---
 
@@ -49,30 +49,70 @@ ggplot(
 
 ### Exercise 3
 
-Remove this text, and add your answer for Exercise 3 here.
+Violin plots reveal the number of observations at each level with the width of the body. On the other hand, box plots shows the percentiles and outliers more clearly.
 
 ```{r plastic-waste-violin}
-# insert code here
+ggplot(
+  data = plastic_waste,
+  mapping = aes(
+    x = continent,
+    y = plastic_waste_per_cap
+  )
+) +
+  geom_violin()
 ```
 
 ### Exercise 4
 
-Remove this text, and add your answer for Exercise 4 here.
+Plastic waste per capita and mismanaged plastic waste per capita looks like they are positively correlated.
 
 ```{r plastic-waste-mismanaged}
-# insert code here
+ggplot(
+  data = plastic_waste,
+  mapping = aes(
+    x = plastic_waste_per_cap,
+    y = mismanaged_plastic_waste_per_cap,
+  )
+) +
+  geom_point()
 ```
+
+There appeared to be some distinctions between continents in terms of the association between plastic waste per capita and mismanaged plastic waste per capita. Africa has a much clearer and steeper slop compared to other continents.
 
 ```{r plastic-waste-mismanaged-continent}
-# insert code here
+ggplot(
+  data = plastic_waste,
+  mapping = aes(
+    x = plastic_waste_per_cap,
+    y = mismanaged_plastic_waste_per_cap,
+    color = continent
+  )
+) +
+  geom_point()
 ```
 
+Plastic waste per capita does not appeared to be linearly correlated with total population nor costal population.
+
 ```{r plastic-waste-population-total}
-# insert code here
+ggplot(
+  data = plastic_waste,
+  mapping = aes(
+    x = plastic_waste_per_cap,
+    y = total_pop
+  )
+) +
+  geom_point()
 ```
 
 ```{r plastic-waste-population-coastal}
-# insert code here
+ggplot(
+  data = plastic_waste,
+  mapping = aes(
+    x = plastic_waste_per_cap,
+    y = coastal_pop
+  )
+) +
+  geom_point()
 ```
 
 ### Exercise 5

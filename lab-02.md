@@ -1,7 +1,7 @@
 Lab 02 - Plastic waste
 ================
-Insert your name here
-Insert date here
+Yiwei Tang
+1/22/2026
 
 ## Load packages and data
 
@@ -66,31 +66,103 @@ ggplot(
 
 ### Exercise 3
 
-Remove this text, and add your answer for Exercise 3 here.
+Violin plots reveal the number of observations at each level with the
+width of the body. On the other hand, box plots shows the percentiles
+and outliers more clearly.
 
 ``` r
-# insert code here
+ggplot(
+  data = plastic_waste,
+  mapping = aes(
+    x = continent,
+    y = plastic_waste_per_cap
+  )
+) +
+  geom_violin()
 ```
+
+    ## Warning: Removed 51 rows containing non-finite outside the scale range
+    ## (`stat_ydensity()`).
+
+![](lab-02_files/figure-gfm/plastic-waste-violin-1.png)<!-- -->
 
 ### Exercise 4
 
-Remove this text, and add your answer for Exercise 4 here.
+Plastic waste per capita and mismanaged plastic waste per capita looks
+like they are positively correlated.
 
 ``` r
-# insert code here
+ggplot(
+  data = plastic_waste,
+  mapping = aes(
+    x = plastic_waste_per_cap,
+    y = mismanaged_plastic_waste_per_cap,
+  )
+) +
+  geom_point()
 ```
 
-``` r
-# insert code here
-```
+    ## Warning: Removed 51 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](lab-02_files/figure-gfm/plastic-waste-mismanaged-1.png)<!-- -->
+
+There appeared to be some distinctions between continents in terms of
+the association between plastic waste per capita and mismanaged plastic
+waste per capita. Africa has a much clearer and steeper slop compared to
+other continents.
 
 ``` r
-# insert code here
+ggplot(
+  data = plastic_waste,
+  mapping = aes(
+    x = plastic_waste_per_cap,
+    y = mismanaged_plastic_waste_per_cap,
+    color = continent
+  )
+) +
+  geom_point()
 ```
 
+    ## Warning: Removed 51 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](lab-02_files/figure-gfm/plastic-waste-mismanaged-continent-1.png)<!-- -->
+
+Plastic waste per capita does not appeared to be linearly correlated
+with total population nor costal population.
+
 ``` r
-# insert code here
+ggplot(
+  data = plastic_waste,
+  mapping = aes(
+    x = plastic_waste_per_cap,
+    y = total_pop
+  )
+) +
+  geom_point()
 ```
+
+    ## Warning: Removed 61 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](lab-02_files/figure-gfm/plastic-waste-population-total-1.png)<!-- -->
+
+``` r
+ggplot(
+  data = plastic_waste,
+  mapping = aes(
+    x = plastic_waste_per_cap,
+    y = coastal_pop
+  )
+) +
+  geom_point()
+```
+
+    ## Warning: Removed 51 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](lab-02_files/figure-gfm/plastic-waste-population-coastal-1.png)<!-- -->
 
 ### Exercise 5
 
