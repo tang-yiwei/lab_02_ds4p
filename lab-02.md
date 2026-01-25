@@ -1,7 +1,7 @@
 Lab 02 - Plastic waste
 ================
 Yiwei Tang
-1/22/2026
+1/25/2026
 
 ## Load packages and data
 
@@ -166,8 +166,37 @@ ggplot(
 
 ### Exercise 5
 
-Remove this text, and add your answer for Exercise 5 here.
+There seems to be a weak positive correlation between coastal population
+proportion and plastic waste per capita. It is hard to tell whether
+continent plays a role in this relationship.
 
 ``` r
-# insert code here
+plastic.data <- filter(plastic_waste, plastic_waste_per_cap < 3)
+plastic.data$coastal_proportion <- plastic.data$coastal_pop/plastic.data$total_pop
+ggplot(
+  data = plastic.data,
+  mapping = aes(
+    x = coastal_proportion,
+    y = plastic_waste_per_cap,
+    color = continent)
+) +
+geom_point() +
+geom_smooth(color = "black") +
+scale_color_viridis_d() +
+labs(
+  x = "Costal population proportion (Costal / total population)",
+  y = "Plastic waste per capita",
+  title = "Pastic waste vs. coastal population proportion",
+  subtitle = "by continent"
+)
 ```
+
+    ## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+
+    ## Warning: Removed 10 rows containing non-finite outside the scale range
+    ## (`stat_smooth()`).
+
+    ## Warning: Removed 10 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](lab-02_files/figure-gfm/recreate-viz-1.png)<!-- -->
