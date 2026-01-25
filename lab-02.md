@@ -187,7 +187,13 @@ labs(
   x = "Costal population proportion (Costal / total population)",
   y = "Plastic waste per capita",
   title = "Pastic waste vs. coastal population proportion",
-  subtitle = "by continent"
+  subtitle = "by continent",
+  color = "Continent"
+) +
+theme(
+    legend.key = element_rect(fill = "transparent"),
+    panel.background = element_rect(fill = "transparent"),
+    panel.grid = element_line(color = "gray90")
 )
 ```
 
